@@ -104,8 +104,8 @@ RUN /bin/bash -c ". sparrow-data/ocr/.env_ocr/bin/activate && \
     pip install -U pip setuptools wheel meson ninja && \
     pip install -r sparrow-data/ocr/requirements.txt"
 
-# Missing dependency
-RUN pip install fastapi[all] typer[all] weaviate-client
+# Missing dependencies
+RUN pip install fastapi[all] typer[all] weaviate-client llama_index
 
 # Hack to set pythonpath due to bug preventing package discovery
 ENV PYTHONPATH="/usr/lib/python310.zip:/usr/lib/python3.10:/usr/lib/python3.10/lib-dynload:/usr/local/lib/python3.10/dist-packages:/usr/lib/python3/dist-packages"

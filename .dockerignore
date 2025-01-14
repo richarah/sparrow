@@ -1,0 +1,17 @@
+*.md
+LICENSE
+CHANGELOG.md
+README.MD
+docker-compose.yml
+
+**/__pycache__/*
+**/*.pyc
+**/*.pyo
+**/*.pyd
+
+Dockerfile
+
+**/*.jpg
+**/*.png
+
+**/*.git
