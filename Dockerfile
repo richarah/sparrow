@@ -105,7 +105,7 @@ RUN /bin/bash -c ". sparrow-data/ocr/.env_ocr/bin/activate && \
     pip install -r sparrow-data/ocr/requirements.txt"
 
 # Missing dependency
-RUN pip install fastapi[all] typer[all]
+RUN pip install fastapi[all] typer[all] weaviate-client
 
 # Hack to set pythonpath due to bug preventing package discovery
 ENV PYTHONPATH="/usr/lib/python310.zip:/usr/lib/python3.10:/usr/lib/python3.10/lib-dynload:/usr/local/lib/python3.10/dist-packages:/usr/lib/python3/dist-packages"
