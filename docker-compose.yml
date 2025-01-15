@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   weaviate:
-    container_name: weaviate-db
+    container_name: weaviate
     command:
       - --host
       - 0.0.0.0
@@ -24,6 +24,9 @@ services:
       DEFAULT_VECTORIZER_MODULE: 'none'
       ENABLE_MODULES: ''
       CLUSTER_HOSTNAME: 'node1'
+    networks:
+      sparrow-network:
+        ipv4_address: 192.168.1.100
 
   sparrow:
     build:
@@ -38,8 +41,16 @@ services:
       - .:/app
     runtime: nvidia
     command: bash -c "source ~/.bashrc && python3.10 api.py --port 8000"
-    depends_on:
-      - weaviate
+    networks:
+      sparrow-network:
+        ipv4_address: 192.168.1.101
 
 volumes:
   weaviate_data:
+
+networks:
+  sparrow-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.1.0/24

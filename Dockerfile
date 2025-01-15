@@ -105,7 +105,8 @@ RUN /bin/bash -c ". sparrow-data/ocr/.env_ocr/bin/activate && \
     pip install -r sparrow-data/ocr/requirements.txt"
 
 # Missing dependencies
-RUN pip install --ignore-installed pyyaml fastapi[all] typer[all] weaviate-client llama_index llama-index-vector-stores-weaviate llama-index-embeddings-huggingface
+RUN pip install --ignore-installed pyyaml
+RUN pip install --ignore-installed -r sparrow-ml/llm/requirements_llamaindex.txt
 
 # Hack to set pythonpath due to bug preventing package discovery
 ENV PYTHONPATH="/usr/lib/python310.zip:/usr/lib/python3.10:/usr/lib/python3.10/lib-dynload:/usr/local/lib/python3.10/dist-packages:/usr/lib/python3/dist-packages"
